@@ -309,7 +309,7 @@ export default function DashboardPage() {
             {/* Token Stats */}
             {activeToken && (
               <div className="mb-8">
-                <TokenStats token={activeToken} />
+                <TokenStats tokenSymbol={activeToken.symbol} />
               </div>
             )}
             
