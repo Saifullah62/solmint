@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20.18.0"
+  NEXT_PUBLIC_SOLANA_NETWORK = "mainnet-beta"
+  MAINNET_RPC_URL = "https://api.mainnet-beta.solana.com"
+  DEVNET_RPC_URL = "https://api.devnet.solana.com"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
