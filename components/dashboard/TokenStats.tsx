@@ -3,13 +3,18 @@
 import { useState } from 'react';
 import { BarChart, LineChart, ArrowUp, ArrowDown, Users, DollarSign, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { TokenData } from '@/services/tokenService';
 
 interface TokenStatsProps {
-  tokenSymbol: string;
+  tokenSymbol?: string;
+  token?: TokenData;
 }
 
-export const TokenStats = ({ tokenSymbol }: TokenStatsProps) => {
+export const TokenStats = ({ tokenSymbol, token }: TokenStatsProps) => {
   const [timeframe, setTimeframe] = useState<'day' | 'week' | 'month'>('week');
+  
+  // Use tokenSymbol from props or from token object if available
+  const symbol = tokenSymbol || (token?.symbol || 'Unknown');
   
   // Mock data - would be replaced with real data from API
   const stats = {
@@ -27,7 +32,7 @@ export const TokenStats = ({ tokenSymbol }: TokenStatsProps) => {
     <div className="bg-[#1A1A40] border border-[#1A1A40] rounded-xl overflow-hidden">
       <div className="p-5 border-b border-[#0E0E2C]">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-white font-['Sora']">{tokenSymbol} Performance</h3>
+          <h3 className="text-xl font-bold text-white font-['Sora']">{symbol} Performance</h3>
           <div className="flex space-x-2">
             <Button 
               variant="ghost" 
